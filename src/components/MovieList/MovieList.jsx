@@ -27,7 +27,7 @@ console.log('comments dont count for doing a commit')
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
+                        <div className="container" onClick={handleSubmit} key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>
