@@ -51,6 +51,8 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+ // two reducers 
+// two gets for move
 
 // Create one store that all components can use
 const storeInstance = createStore(
