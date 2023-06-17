@@ -30,11 +30,7 @@ router.get('/'), (req,res) =>{
     })
 }
 
-// router.get
-// This router.get will be used to grab the movie generes with two join statementes that compare 
-// with genere id = genere and movie id
-// second join will be movies id and movie genere and genere id 
-// where movies id=$1
+ 
 
 router.post('/', (req, res) => {
   console.log(req.body);

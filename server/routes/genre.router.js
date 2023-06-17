@@ -2,10 +2,16 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
-  // Add query to get join what we need so select the generes for that movie that match id of the poster that was clicked on 
-  // the orignal comment instructed to get all generes but I am going to go about it like 
+router.get('/:id', (req, res) => { 
+
+  // return the genres that match the movies id
+const movieId =  req.params.id
+const genreQuery = ` SELECT "genres"."name" AS "category" FROM "genres"
+JOIN "movies_genres" ON "movies_genres"."genre_id" = "genres"."id"
+JOIN "movies" ON "movies"."id" = "movies_genres"."movie_id"
+WHERE "movies"."id" = $1`
+
   res.sendStatus(500)
 });
-
 module.exports = router;
+
