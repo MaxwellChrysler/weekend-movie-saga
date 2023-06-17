@@ -8,14 +8,21 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+// ========================== Root Saga  ================================ //
 // Create the rootSaga generator function
+
+
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-}
+    yield takeLatest('FETCH_GENRES' fetchGenres);
 
+}
+// ========================== Root Saga  ================================ //
+
+// ========================== FETCH  ================================ //
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
@@ -29,10 +36,13 @@ function* fetchAllMovies() {
         
 }
 
-// Create sagaMiddleware
-const sagaMiddleware = createSagaMiddleware();
 
+// ========================== FETCH  ================================ //
+
+
+// ======================= Reducers ============================= //
 // Used to store movies returned from the server
+
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -51,21 +61,32 @@ const genres = (state = [], action) => {
             return state;
     }
 }
- // two reducers 
-// two gets for move
+// ======================= Reducers ============================= //
+
+
+// ======================= Store ============================= //
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        details, // need to add still
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
 );
 
+// ======================= Store ============================= //
+
+// ======================= SagaMiddleware ============================= //
+
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
+
+const sagaMiddleware = createSagaMiddleware();
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
