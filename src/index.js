@@ -10,6 +10,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+const sagaMiddleware = createSagaMiddleware(); // This has to be placed before it's used in the store
 
 // ========================== Root Saga  ================================ //
 // Create the rootSaga generator function
@@ -17,7 +18,7 @@ import axios from 'axios';
 
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeLatest('FETCH_GENRES' fetchGenres);
+    yield takeLatest('FETCH_GENRES', fetchGenres);
 
 }
 // ========================== Root Saga  ================================ //
@@ -36,6 +37,10 @@ function* fetchAllMovies() {
         
 }
 
+
+function* fetchGenres (action) { // named this wa
+
+}
 
 // ========================== FETCH  ================================ //
 
@@ -61,6 +66,13 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+
+const details = (state = [], action) => { // if this being called return the details for the movies
+    if (action.type === 'SET_DETAILS'){
+        return action.payload;
+    }
+    return state;
+}
 // ======================= Reducers ============================= //
 
 
@@ -71,7 +83,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        details, // need to add still
+        details,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
@@ -82,9 +94,10 @@ const storeInstance = createStore(
 // ======================= SagaMiddleware ============================= //
 
 // Pass rootSaga into our sagaMiddleware
+
 sagaMiddleware.run(rootSaga);
 
-const sagaMiddleware = createSagaMiddleware();
+
 
 
 
