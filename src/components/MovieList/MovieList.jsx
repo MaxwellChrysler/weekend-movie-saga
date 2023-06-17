@@ -19,14 +19,14 @@ console.log('comments dont count for doing a commit')
 
     const handleSubmit = (event) => { // function for button to change pages
         event.preventDefault();
-        history.push("/details");
+        history.push("/details"); // This will also be the function that dispatchs 
       };
 
     return (
         <main>
            
            
-            <h1>MovieList</h1>
+            <h1>Movie List</h1>
             <h4>Click on a movie poster to show details</h4>
             <section className="movies">
                 {movies.map(movie => {

@@ -13,6 +13,7 @@ import "./Details.css";
 function Details() {
   const history = useHistory();
 
+  
   const handleSubmit = (event) => {
     // function for button that switches back to the home page
     event.preventDefault();

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => { // gets all movies and displays them onto the home page or Move
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
@@ -16,13 +16,17 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/'), (req,res) =>{
+  console.log('In Joint sql description get statement',req.body)
 
+  const getInfo = `SELECT `
+}
 
 // router.get
 // This router.get will be used to grab the movie generes with two join statementes that compare 
 // with genere id = genere and movie id
 // second join will be movies id and movie genere and genere id 
-//where movies id=$1
+// where movies id=$1
 
 router.post('/', (req, res) => {
   console.log(req.body);
