@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import './Details.css'
-
+import "./Details.css";
 
 // This should show all details including ALL genres for the selected movie, including title, description, and the image, too! Use Sagas and Redux to handle these requests and data.
 
@@ -10,26 +9,22 @@ import './Details.css'
 // Base functionality does not require the movie details to load correctly after refresh of the browser.
 
 // Hint : You can make a GET request for a specific movie. Remember req.params and :id?
-    
 
-function Details () {
-    const history = useHistory();
+function Details() {
+  const history = useHistory();
 
-
-    const handleSubmit = (event) => { // function for button to change pages
-        event.preventDefault();
-        history.push("/");
-      };
-    return (
-
-        <div>
-<button className="switchPages" onClick={handleSubmit}>Go to movie list </button>
-            Details page 
-        </div>
-    )
-
-
-
+  const handleSubmit = (event) => {
+    // function for button that switches back to the home page
+    event.preventDefault();
+    history.push("/");
+  };
+  return (
+    <div>
+      <button className="switchPages" onClick={handleSubmit}>
+        Go to back to movie list{" "}
+      </button>
+    </div>
+  );
 }
 
 export default Details;

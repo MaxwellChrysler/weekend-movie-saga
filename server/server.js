@@ -5,7 +5,7 @@ const genreRouter = require('./routes/genre.router.js')
 const port = process.env.PORT || 5000;
 
 /** ---------- MIDDLEWARE ---------- **/
-app.use(express.json()); // needed for axios
+app.use(express.json()); // needed for axios Chris Black made this change because it said angular here before 
 app.use(express.static('build'));
 
 /** ---------- ROUTES ---------- **/

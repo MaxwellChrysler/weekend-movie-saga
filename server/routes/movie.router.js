@@ -16,13 +16,21 @@ router.get('/', (req, res) => {
 
 });
 
+
+
+// router.get
+// This router.get will be used to grab the movie generes with two join statementes that compare 
+// with genere id = genere and movie id
+// second join will be movies id and movie genere and genere id 
+//where movies id=$1
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
   const insertMovieQuery = `
   INSERT INTO "movies" ("title", "poster", "description")
   VALUES ($1, $2, $3)
-  RETURNING "id";`
+  RETURNING "id";` 
 
   // FIRST QUERY MAKES MOVIE
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])

@@ -9,7 +9,10 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' }); // payload is the movie so we move it to the index and then in the index the movie object will be action.payload and action.payload is an object and then we can access the id and then target that and call the id to display those details of to the get request genres path rest of it send to another called like details reducer that way the reducer can return action.payload that will just 
+        dispatch({ type: 'FETCH_MOVIES' }); 
+        // payload is the movie so we move it to the index and then in the index the movie object will be action.payload and action.payload
+        // is an object and then we can access the id and then target that and call 
+        //the id to display those details of to the get request genres path rest of it send to another called like details reducer that way the reducer can return action.payload that will just 
         //be an ojbect that we can just plug in something like in the details page details.useSelector => store 
     }, []);
 console.log('comments dont count for doing a commit')
@@ -21,13 +24,14 @@ console.log('comments dont count for doing a commit')
 
     return (
         <main>
-            <h1>Click on a movie poster to show details</h1>
-            <button className="switchPages" onClick={handleSubmit}> poster here</button>
+           
+           
             <h1>MovieList</h1>
+            <h4>Click on a movie poster to show details</h4>
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div className="container" onClick={handleSubmit} key={movie.id} >
+                        <div className="poster-container" onClick={handleSubmit} key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>
