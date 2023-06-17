@@ -15,7 +15,7 @@ function MovieList() {
         //the id to display those details of to the get request genres path rest of it send to another called like details reducer that way the reducer can return action.payload that will just 
         //be an ojbect that we can just plug in something like in the details page details.useSelector => store 
     }, []);
-console.log('comments dont count for doing a commit')
+
 
     const handleSubmit = (event) => { // function for button to change pages
         event.preventDefault();
