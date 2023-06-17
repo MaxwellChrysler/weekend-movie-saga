@@ -38,7 +38,19 @@ function* fetchAllMovies() {
 }
 
 
-function* fetchGenres (action) { // named this wa
+function* fetchGenres (action) { // 
+
+    try {
+        const genres = yield axios.get(`/api/genre/${action.payload.id}`);
+        console.log('from fetch genres', genres.data);
+
+        yield put({ type:'SET_GENRES', payload: genres.data});
+        yield put ({ type: 'SET_DETAILS', payload: action.payload})
+
+
+    } catch {
+        console.log('error getting genres check fetchGenres'); 
+    }
 
 }
 
