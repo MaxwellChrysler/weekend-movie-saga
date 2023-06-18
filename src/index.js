@@ -41,10 +41,10 @@ function* fetchAllMovies() {
 function* fetchGenres (action) { // 
 
     try {
-        const genres = yield axios.get(`/api/genre/${action.payload.id}`);
+        const genres = yield axios.get(`/api/genre/${action.payload.id}`); // this is getting the id
         console.log('from fetch genres', genres.data);
 
-        yield put({ type:'SET_GENRES', payload: genres.data});
+        yield put({ type:'SET_GENRES', payload: genres.data}); // are then going to display the genre and details based off the id matching
         yield put ({ type: 'SET_DETAILS', payload: action.payload})
 
 
@@ -95,7 +95,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        details,
+        // details,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

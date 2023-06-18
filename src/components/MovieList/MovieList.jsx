@@ -17,6 +17,8 @@ function MovieList() {
     }, []);
 
 
+
+
     const handleSubmit = (event) => { // function for button to change pages
         event.preventDefault();
         history.push("/details"); // This will also be the function that dispatchs 
