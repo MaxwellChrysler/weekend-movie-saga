@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware(); // This has to be placed before i
 
 function* rootSaga() {
   yield takeEvery("FETCH_MOVIES", fetchAllMovies);
-  yield takeEvery("FETCH_DETAILS", fetchGenres);
+  yield takeEvery("GET_DETAILS", fetchGenres);
 }
 // ========================== Root Saga  ================================ //
 
@@ -28,6 +28,8 @@ function* fetchAllMovies() {
     const movies = yield axios.get("/api/movie");
     console.log("get all:", movies.data);
     yield put({ type: "SET_MOVIES", payload: movies.data });
+    // yield put({ type: "SET_GENRES", payload: genres.data }); // are then going to display the genre and details based off the id matching
+    // yield put({ type: "SET_DETAILS", payload: action.payload}); // 
   } catch {
     console.log("get all error");
   }
@@ -35,13 +37,13 @@ function* fetchAllMovies() {
 
 function* fetchGenres(action) {
   //
-
+console.log(action.payload,"Index ")
   try {
-    const genres = yield axios.get(`/api/movie/details/${action.payload.id}`); // this is getting the id
-    console.log("from fetch genres", genres.data);
+    const genres = yield axios.get(`/api/genre/${action.payload.id}`); // this is getting the id
+    console.log("from fetch genres", genres);
 
-    yield put({ type: "SET_GENRES", payload: action.payload }); // are then going to display the genre and details based off the id matching
-    yield put({ type: "SET_DETAILS", payload: details.data });
+    yield put({ type: "SET_GENRES", payload: genres.data }); // are then going to display the genre and details based off the id matching
+    yield put({ type: "SET_DETAILS", payload: action.payload}); // 
   } catch {
     console.log("error getting genres check fetchGenres");
   }

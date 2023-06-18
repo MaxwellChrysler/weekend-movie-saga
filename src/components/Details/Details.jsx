@@ -13,12 +13,9 @@ import "./Details.css";
 
 function Details() {
   const history = useHistory();
-  const dispatch = useDispatch();
 const details = useSelector(store => store.details)
 const genres = useSelector(store => store.genres)// probably should be genres not sure
 
-
-console.log(details.title,details,genres)
 
   
   const handleSubmit = (event) => {

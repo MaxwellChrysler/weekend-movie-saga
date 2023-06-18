@@ -29,7 +29,7 @@ function MovieList() {
 const getDetails = (movie) => {
     console.log('movie poster was clicked with id:', movie)
     dispatch({ type: 'GET_DETAILS', payload: movie})
-    history.push(`/details`)
+    // history.push(`/details`)
 }
 
     return (
