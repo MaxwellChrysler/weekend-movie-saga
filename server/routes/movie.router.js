@@ -15,20 +15,20 @@ router.get('/', (req, res) => { // gets all movies and displays them onto the ho
     })
 
 });
-
-// router.get('/'), (req,res) =>{
-//   const movieId = req.params.id
-//   const query = `SELECT * FROM movies WHERE id= $1`;
-//   pool.query(query [movieId])
+//I don't think i need this i am lost
+router.get('/'), (req,res) =>{
+  const movieId = req.params.id
+  const query = `SELECT * FROM movies WHERE id= $1`;
+  pool.query(query [movieId])
  
-//     .then(result => {
-//       console.log('router got the movie ids');
-//       res.send(result.rows);
-//     }).catch(error => {
-//       console.log('error in getting movie id query');
-//       res.sendStatus(500)
-//     })
-// }
+    .then(result => {
+      console.log('router got the movie ids');
+      res.send(result.rows);
+    }).catch(error => {
+      console.log('error in getting movie id query');
+      res.sendStatus(500)
+    })
+}
 
  
 

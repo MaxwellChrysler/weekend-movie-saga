@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import "./Details.css";
 
 // This should show all details including ALL genres for the selected movie, including title, description, and the image, too! Use Sagas and Redux to handle these requests and data.
@@ -12,6 +13,12 @@ import "./Details.css";
 
 function Details() {
   const history = useHistory();
+  const dispatch = useDispatch();
+const details = useSelector(store => store.details)
+const genres = useSelector(store => store.genres)// probably should be genres not sure
+
+
+console.log(details.title,details,genres)
 
   
   const handleSubmit = (event) => {
@@ -21,9 +28,18 @@ function Details() {
   };
   return (
     <div>
+      <h1> Movie Details</h1>
+      <p>{details.description}</p>
+
       <button className="switchPages" onClick={handleSubmit}>
-        Go to back to movie list{" "}
+        Go to back to movie list
+
       </button>
+      {genres.map(genre  => (
+                    <div>
+                      <p>{genre.name}</p>
+                      </div>
+                ))}
     </div>
   );
 }

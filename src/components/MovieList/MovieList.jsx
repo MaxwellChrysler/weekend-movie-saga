@@ -19,10 +19,18 @@ function MovieList() {
 
 
 
-    const handleSubmit = (event) => { // function for button to change pages
-        event.preventDefault();
-        history.push("/details"); // This will also be the function that dispatchs 
-      };
+    // const handleSubmit = (event) => { // function for button to change pages
+    //     event.preventDefault();
+    //     // history.push("/details"); // This will also be the function that dispatchs 
+    //   };
+
+
+
+const getDetails = (movie) => {
+    console.log('movie poster was clicked with id:', movie)
+    dispatch({ type: 'GET_DETAILS', payload: movie})
+    history.push(`/details`)
+}
 
     return (
         <main>
@@ -32,10 +40,10 @@ function MovieList() {
             <h4>Click on a movie poster to show details</h4>
             <section className="movies">
                 {movies.map(movie => {
-                    return (
-                        <div className="poster-container" onClick={handleSubmit} key={movie.id} >
+                     return (
+                        <div key={movie.id} onClick={() => getDetails(movie)}>
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img src={movie.poster} alt={movie.title} />
                         </div>
                     );
                 })}
