@@ -27,14 +27,15 @@ const genres = useSelector(store => store.genres)// probably should be genres no
     <div>
       <h1> Movie Details</h1>
       <p>{details.description}</p>
+   
 
       <button className="switchPages" onClick={handleSubmit}>
         Go to back to movie list
 
       </button>
-      {genres.map(genre  => (
+      {genres.map((genre,i)=> (
                     <div>
-                      <p>{genre.name}</p>
+                      <p key={i}>{genre.category}</p>
                       </div>
                 ))}
     </div>
